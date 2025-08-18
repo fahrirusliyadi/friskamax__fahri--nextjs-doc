@@ -1,6 +1,6 @@
 # Component Customization
 
-This guide explains how to customize the components in the Next.js Portfolio Template to match your design preferences and branding.
+This guide explains how to customize the components in the template to match your design preferences and branding.
 
 ## Component Structure
 

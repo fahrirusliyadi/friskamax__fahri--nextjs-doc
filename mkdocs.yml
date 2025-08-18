@@ -1,4 +1,4 @@
-site_name: Next.js Portfolio Template Documentation
+site_name: Portfolio Template Documentation
 nav:
   - Home: index.md
   - Project Structure: project-structure.md
@@ -8,3 +8,5 @@ nav:
   - Component Customization: component-customization.md
   - Styling & Theme: styling.md
   - Deployment: deployment.md
+theme: material
+use_directory_urls: false

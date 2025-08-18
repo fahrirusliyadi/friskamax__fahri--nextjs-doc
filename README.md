@@ -1,6 +1,6 @@
-# Next.js Portfolio Template Documentation
+# Portfolio Template Documentation
 
-This repository contains the documentation for the Next.js Portfolio Template.
+This repository contains the documentation for the Portfolio Template.
 
 ## Building the Documentation
 

@@ -1,6 +1,6 @@
 # Styling and Theme Customization
 
-This guide explains how to customize the styling and theme of your Next.js Portfolio Template.
+This guide explains how to customize the styling and theme of your portfolio.
 
 ## Global Styles
 

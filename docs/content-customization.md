@@ -9,20 +9,9 @@ The main site configuration is located in `src/config/site.ts`. This file contai
 ```typescript
 export const siteConfig = {
   name: 'Your Name',
-  url: 'https://your-website.com',
-  description: 'Your professional description',
-  author: 'Your Name',
-  keywords: ['designer', 'developer', 'portfolio'],
+  description: 'Your professional description or tagline',
 };
 ```
-
-Update these values to reflect your personal information:
-
-- `name`: Your name or brand name
-- `url`: The URL of your portfolio site
-- `description`: A brief description of yourself or your work
-- `author`: Your name (used in meta tags)
-- `keywords`: Keywords for SEO (array of strings)
 
 ## Personal Information Components
 
@@ -30,25 +19,34 @@ Personal information is displayed in several components throughout the site:
 
 ### Header
 
-The header component displays your name or logo. To customize the header:
+- Update navigation links in `src/components/layout/header.tsx`.
+- Update the logo in `src/assets/svg/logo.svg`
+- Or modify to use text in `src/components/layout/header.tsx`. Example:
 
-1. Update the logo in `src/assets/svg/logo.svg`
-2. Or modify the text in `src/components/layout/header.tsx`
+```tsx
+<TransitionLink href="/">
+  {/* <Logo className="h-6 w-6" /> */}
+  <span className="text-base font-black leading-none tracking-tighter text-white">Fahri.</span>
+</TransitionLink>
+```
+![Header](img/header.png)
 
 ### Footer
 
-The footer contains your name and social links. To customize:
+- Update footer text in `src/components/layout/footer.tsx`.
+- Update navigation links in `src/components/layout/footer-menu.tsx`.
+- Update social links in `src/components/layout/footer-social-links.tsx`.
+- Update your name in `src/components/layout/footer-name.tsx`.
 
-1. Update your name in `src/components/layout/footer-name.tsx`
-2. Update social links in `src/components/layout/footer-social-links.tsx`
+![Footer](img/footer.png)
 
 ### About Section
 
-The about section on the home page contains your bio and skills. To customize:
+![About](img/about.png)
 
-1. Update the bio text in `src/app/(main)/(home)/components/about.tsx`
-2. Update skills in `src/app/(main)/(home)/components/about-skills.tsx`
-3. Update experience in `src/app/(main)/(home)/components/about-experience.tsx`
+- Update the bio text in `src/app/(main)/(home)/components/about.tsx`
+- Update experience in `src/app/(main)/(home)/components/about-experience.tsx`
+- Update skills in `src/app/(main)/(home)/components/about-skills.tsx`
 
 ## Project Content
 

@@ -1,6 +1,6 @@
 # Deployment
 
-This guide explains how to deploy your Next.js Portfolio Template to various hosting platforms.
+This guide explains how to deploy your portfolio to various hosting platforms.
 
 ## Building for Production
 
@@ -20,7 +20,7 @@ pnpm start
 
 ## Deployment Options
 
-The Next.js Portfolio Template can be deployed to any hosting platform that supports Next.js. Here are the most popular options:
+The template can be deployed to any hosting platform that supports Next.js. Here are the most popular options:
 
 ### Vercel (Recommended)
 

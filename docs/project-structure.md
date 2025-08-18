@@ -1,6 +1,6 @@
 # Project Structure
 
-Understanding the project structure is essential for effectively customizing and extending the portfolio template. This document explains the organization of files and directories in the template.
+Understanding the project structure is essential for effectively customizing the portfolio template. This document explains the organization of files and directories in the template.
 
 ## Directory Overview
 
@@ -16,7 +16,6 @@ Understanding the project structure is essential for effectively customizing and
 │   ├── lib/               # Utility functions and libraries
 │   └── assets/            # SVG and other assets
 ├── next.config.ts         # Next.js configuration
-├── tailwind.config.ts     # Tailwind CSS configuration
 └── tsconfig.json          # TypeScript configuration
 ```
 
@@ -30,7 +29,6 @@ The `content/projects/` directory contains MDX files for each project in your po
 
 - Frontmatter metadata (title, description, date, tags, etc.)
 - MDX content for the project description
-- Images and other media related to the project
 
 Example project file structure:
 ```
@@ -42,16 +40,11 @@ content/projects/
 
 ## Public Directory
 
-The `public/` directory contains static assets that are served directly by the web server. This includes:
-
-- Images used in the site (logos, favicons, etc.)
-- Media files for projects
-- Fonts (if not loaded from a CDN)
+The `public/` directory contains static assets that are served directly by the web server. This includes media files for projects.
 
 Example structure:
 ```
 public/
-├── favicon.ico
 ├── media/
 │   ├── project-1/
 │   │   └── featured.png
@@ -89,8 +82,10 @@ src/app/
 │       └── [slug]/         # Dynamic project detail pages
 │           └── page.tsx    # Project detail page
 └── api/                    # API routes
-    └── contact/
-        └── route.ts        # Contact form API route
+    ├── contact/
+    │   └── route.ts        # Contact form API route
+    └── projects/
+        └── route.ts        # Projects API route
 ```
 
 ### Components Directory
