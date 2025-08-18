@@ -1,1 +1,10 @@
-site_name: Fahri Docs
+site_name: Next.js Portfolio Template Documentation
+nav:
+  - Home: index.md
+  - Project Structure: project-structure.md
+  - Setup & Development: setup.md
+  - Content Customization: content-customization.md
+  - Adding Projects: adding-projects.md
+  - Component Customization: component-customization.md
+  - Styling & Theme: styling.md
+  - Deployment: deployment.md
