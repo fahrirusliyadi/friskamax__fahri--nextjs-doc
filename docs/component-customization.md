@@ -94,6 +94,71 @@ The image box component is located at `src/components/mdx/img-box.tsx`. It's use
 
 The full-width component is located at `src/components/mdx/full-width.tsx`. It's used for creating full-width content sections.
 
+### Adding Custom MDX Components
+
+To add your own custom MDX components:
+
+1. Create a new component file in `src/components/mdx/` with a `.tsx` extension
+2. Implement your component using React and TypeScript
+3. Export the component as the default export
+4. Register your component in `src/components/mdx/index.tsx`
+
+Example of a custom MDX component:
+
+```tsx
+// src/components/mdx/custom-card.tsx
+import React from 'react';
+
+interface CustomCardProps {
+  title: string;
+  description: string;
+  children?: React.ReactNode;
+}
+
+const CustomCard: React.FC<CustomCardProps> = ({ title, description, children }) => {
+  return (
+    <div className="border rounded-lg p-6 shadow-sm bg-white">
+      <h3 className="text-xl font-bold mb-2">{title}</h3>
+      <p className="text-gray-600 mb-4">{description}</p>
+      {children && <div className="mt-4">{children}</div>}
+    </div>
+  );
+};
+
+export default CustomCard;
+```
+
+Register the component in `src/components/mdx/index.tsx`:
+
+```tsx
+import { MDXComponents } from 'mdx/types';
+import A from './a';
+import FullWidth from './full-width';
+import Img from './img';
+import ImgBox from './img-box';
+import CustomCard from './custom-card'; // Add this import
+
+export const components: MDXComponents = {
+  a: A,
+  Img,
+  ImgBox,
+  FullWidth,
+  CustomCard, // Add this line to register the component
+};
+```
+
+Now you can use your custom component in any MDX file:
+
+```mdx
+## My Project Details
+
+<CustomCard title="Project Highlights" description="Key features of this project">
+  - Feature one
+  - Feature two
+  - Feature three
+</CustomCard>
+```
+
 ## Animation Components
 
 The template includes several animation components for creating smooth transitions and effects.
