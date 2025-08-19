@@ -48,11 +48,11 @@ Here's a detailed explanation of each field:
 - `role`: Your role in the project
 - `tags`: An array of tags for categorizing the project
 - `url`: URL to the live project (optional)
-- `image`: Featured image information (optional but recommended)
-  - `src`: Path to the image file
-  - `width`: Width of the image in pixels
-  - `height`: Height of the image in pixels
-- `color`: Accent color for the project (used in UI elements)
+- `image`: Featured image information
+    - `src`: Path to the image file
+    - `width`: Width of the image in pixels
+    - `height`: Height of the image in pixels
+- `color`: Accent color for the project (used as background color)
 - `featured`: Whether the project should be featured on the home page (true/false)
 
 ### Content
@@ -114,21 +114,11 @@ In your MDX file, you can reference these images:
 
 ```mdx
 ![Project Screenshot](/media/my-awesome-project/screenshot-1.png)
-
-<ImgBox src="/media/my-awesome-project/screenshot-2.png" alt="Another view" caption="Dashboard view" />
 ```
 
 ## Using Custom MDX Components
 
 The template includes several custom MDX components that you can use in your project descriptions:
-
-### ImgBox
-
-For displaying images with captions:
-
-```mdx
-<ImgBox src="/media/project-name/screenshot.png" alt="Project screenshot" caption="Project screenshot" />
-```
 
 ### FullWidth
 
@@ -136,36 +126,38 @@ For full-width content sections:
 
 ```mdx
 <FullWidth>
-  <div className="bg-gray-100 p-8 rounded-lg">
+  <div className="bg-gray-100 p-8">
     <h3>Full Width Section</h3>
     <p>This content spans the full width of the page.</p>
   </div>
 </FullWidth>
 ```
 
+![FullWidth](img/full-width.png)
+
+### ImgBox
+
+For displaying images with captions, best used inside a FullWidth component:
+
+```mdx
+<FullWidth>
+  <ImgBox
+    src="/media/fahri-2025/project.png"
+    alt="Project item"
+    color="#9c87ff"
+    imgProps={{ width: 672, height: 373 }}
+  />
+</FullWidth>
+```
+
+![ImgBox](img/img-box.png)
+
+
+
 ### Links
 
-Custom link component with underline animation:
+Custom link component for external links:
 
 ```mdx
 Check out the [project website](https://project-url.com/).
 ```
-
-## Project Validation
-
-When you create a new project file, the template will automatically validate the frontmatter and content. If there are any issues, you'll see error messages in the development console.
-
-Make sure to:
-
-1. Include all required frontmatter fields
-2. Use the correct date format (YYYY-MM-DD)
-3. Provide valid image paths
-4. Use appropriate tags for categorization
-
-## Best Practices
-
-1. **Consistent Naming**: Use consistent naming conventions for your project slugs
-2. **Image Optimization**: Optimize images for the web to improve loading times
-3. **Descriptive Tags**: Use descriptive tags that help categorize your projects
-4. **Featured Projects**: Mark your best projects as `featured: true` to showcase them on the home page
-5. **Regular Updates**: Keep project descriptions up to date with the latest information

@@ -120,16 +120,15 @@ The template uses Husky for Git hooks to ensure code quality. Pre-commit hooks w
 
 ### Common Issues
 
-1. **Dependency Installation Errors**: If you encounter errors during `pnpm install`, try clearing the cache: `pnpm store prune && pnpm install`
+1. **Dependency Installation Errors**: If you encounter errors during `pnpm install`, try clearing the cache: 
+  ```bash
+  pnpm store prune
+  pnpm install
+  ```
 
-2. **Port Conflicts**: If port 3000 is already in use, you can specify a different port: `pnpm dev --port 3001`
+2. **Port Conflicts**: If port 3000 is already in use, you can specify a different port: 
+  ```bash
+  pnpm dev --port 3001
+  ```
 
 3. **Build Errors**: If you encounter build errors, ensure all dependencies are installed correctly and check the terminal for specific error messages.
-
-### Getting Help
-
-If you encounter issues not covered in this guide, you can:
-
-1. Check the [Next.js documentation](https://nextjs.org/docs)
-2. Consult the documentation for specific libraries used in the template
-3. Send us a message on [ThemeForest](https://themeforest.net/user/friskamax)

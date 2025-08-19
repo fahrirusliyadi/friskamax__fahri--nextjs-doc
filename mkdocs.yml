@@ -8,5 +8,8 @@ nav:
   - Component Customization: component-customization.md
   - Styling & Theme: styling.md
   - Deployment: deployment.md
+  - Getting Help: support.md
 theme: material
 use_directory_urls: false
+markdown_extensions:
+  - pymdownx.superfences

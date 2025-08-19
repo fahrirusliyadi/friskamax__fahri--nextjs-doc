@@ -10,159 +10,84 @@ Global styles are defined in `src/app/globals.css`. This file contains:
 2. Custom CSS variables
 3. Global utility classes
 
-```css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-```
-
 To customize global styles:
 
 1. Add custom CSS variables to the `:root` selector
 2. Modify existing variables to change color schemes
 3. Add new global utility classes
 
-## Tailwind CSS Configuration
-
-Tailwind CSS configuration is located in `tailwind.config.ts`. This file allows you to:
-
-1. Customize the color palette
-2. Extend spacing and sizing scales
-3. Add custom fonts
-4. Configure plugins
-
-```typescript
-import type { Config } from 'tailwindcss';
-
-const config: Config = {
-  content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
-  theme: {
-    extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },
-    },
-  },
-  plugins: [
-    require('@tailwindcss/typography'),
-  ],
-};
-
-export default config;
-```
-
 ### Customizing Colors
 
-To add custom colors to your palette:
+1. Open the template in the browser
+2. On the right bottom corner, click on the customizer button
+3. Change the colors as desired
+4. Open browser console, you'll see the CSS variables
+5. Copy and paste the variables to `src/app/globals.css` replacing the existing ones
 
-```typescript
-const config: Config = {
-  theme: {
-    extend: {
-      colors: {
-        primary: '#3b82f6',
-        secondary: '#10b981',
-        accent: '#f59e0b',
-      },
-    },
-  },
-};
-```
+![Customizer](img/customizer.png)
+![Customizer colors](img/customizer-variables.png)
 
-Then use them in your components:
+### Removing the Customizer Component
 
-```jsx
-<div className="bg-primary text-white">Primary colored element</div>
-```
+The Customizer component is a development tool that allows you to easily change the color scheme of your portfolio. For production use, you should remove this component as it's not needed for end users.
 
-### Customizing Typography
+To remove the Customizer component:
 
-To customize typography:
+1. Open `src/app/(main)/layout.tsx`
+2. Remove the import statement for the Customizer component:
+   ```diff
+   - import Customizer from '@/components/ui/customizer';
+   ```
 
-```typescript
-const config: Config = {
-  theme: {
-    extend: {
-      fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        serif: ['Playfair Display', 'serif'],
-      },
-      fontSize: {
-        'xxs': '0.625rem',
-        'xxl': '1.75rem',
-      },
-    },
-  },
-};
-```
+3. Remove the Customizer component from the JSX:
+   ```diff
+   - <Customizer />
+   ```
 
-### Adding Plugins
-
-To add Tailwind CSS plugins:
-
-1. Install the plugin:
+4. Optionally, you can also remove the Customizer component file entirely:
    ```bash
-   pnpm add @tailwindcss/forms
+   rm src/components/ui/customizer.tsx
    ```
 
-2. Add it to the plugins array:
-   ```typescript
-   plugins: [
-     require('@tailwindcss/typography'),
-     require('@tailwindcss/forms'),
-   ],
-   ```
+### Customizing Fonts
 
-## Dark Mode
+Next.js provides `next/font` to automatically optimize your fonts, including Google Fonts and custom fonts, and remove the need for external network requests.
 
-The template includes built-in dark mode support using Tailwind CSS and CSS variables. The dark mode is controlled by:
+To use `next/font`:
 
-1. CSS variables in `src/app/globals.css`
-2. Tailwind CSS configuration
-3. System preference detection
+1.  **Import the font**: Import the desired font from `next/font/google` in your `src/app/(main)/layout.tsx` file.
 
-To customize dark mode:
+    ```typescript
+    import { Inter } from 'next/font/google';
+    ```
 
-1. Modify the color variables in the `@media (prefers-color-scheme: dark)` section
-2. Add custom dark mode styles using the `dark:` variant in Tailwind CSS
+2.  **Define the font variable**: Create a variable for the font, specifying subsets, weights, and a CSS variable name.
 
-Example of dark mode styling:
+    ```typescript
+    const inter = Inter({
+      subsets: ['latin'],
+      weight: ['400', '500', '900'],
+      variable: '--font-inter',
+    });
+    ```
 
-```jsx
-<div className="bg-white dark:bg-gray-900 text-black dark:text-white">
-  Content that changes color in dark mode
-</div>
-```
+3.  **Apply the font to the `body` tag**: Add the font variable to the `className` of your `body` tag in `src/app/(main)/layout.tsx`.
+
+    ```typescript
+    import { cn } from '@/lib/utils';
+
+    <body className={cn('font-sans antialiased', inter.variable)}>
+      {children}
+    </body>
+    ```
+
+4.  **Use the font in Tailwind CSS**: Reference the CSS variable in `src/app/globals.css` to use the font in your Tailwind CSS classes.
+
+    ```css
+  @theme inline {
+    --font-sans: var(--font-inter);
+  }
+  ```
 
 ## Responsive Design
 
@@ -205,33 +130,31 @@ To add custom animations:
 
 1. Create animation functions in `src/lib/gsap.ts` or in component files
 2. Use GSAP methods like `gsap.from()`, `gsap.to()`, etc.
-3. Trigger animations with React hooks like `useEffect`
+3. Trigger animations with React hooks like `useGSAP`
 
 Example of a custom animation:
 
-```typescript
-import { useEffect } from 'react';
+```tsx
+import { useRef } from 'react';
 import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 
 const MyComponent = () => {
-  useEffect(() => {
+  const container = useRef();
+
+  useGSAP(() => {
     gsap.from('.my-element', {
       opacity: 0,
       y: 20,
       duration: 0.5,
       delay: 0.2,
     });
-  }, []);
+  }, { scope: container });
 
-  return <div className="my-element">Animated element</div>;
+  return (
+    <div ref={container}>
+      <span className="my-element">Animated element</span>
+    </div>
+  );
 };
 ```
-
-## Best Practices
-
-1. **Consistency**: Maintain consistent styling across all components
-2. **Performance**: Optimize CSS and avoid unnecessary styles
-3. **Accessibility**: Ensure sufficient color contrast and readable font sizes
-4. **Mobile-First**: Design for mobile devices first, then enhance for larger screens
-5. **CSS Variables**: Use CSS variables for consistent theming
-6. **Tailwind Utilities**: Leverage Tailwind's utility classes for rapid development
