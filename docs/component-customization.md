@@ -82,9 +82,13 @@ MDX components are custom React components that can be used within MDX files. Th
 
 The link component is located at `src/components/mdx/a.tsx`. It provides custom styling for links within MDX content.
 
+### Img
+
+The image component is located at `src/components/mdx/img.tsx`. It's used for displaying images with scroll-triggered animations.
+
 ### ImgBox
 
-The image box component is located at `src/components/mdx/img-box.tsx`. It's used for displaying images with captions.
+The image box component is located at `src/components/mdx/img-box.tsx`. It's used for displaying images as boxes with scroll-triggered animations.
 
 ### FullWidth
 
