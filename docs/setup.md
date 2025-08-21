@@ -66,7 +66,19 @@ SMTP_TO_EMAIL=me@example.com
 
 For development, you can use a service like [Mailtrap](https://mailtrap.io/) to test email functionality without sending actual emails. This helps in verifying email functionality without sending actual emails to recipients.
 
-### 4. Development Server
+### 4. Change the Favicon
+
+To customize the favicon for your portfolio:
+
+1. Replace the existing favicon file located at `src/app/favicon.ico` with your own `.ico` file
+2. Ensure your favicon is a square image with dimensions of at least 32x32 pixels
+
+After replacing the favicon, restart your development server to see the changes:
+```bash
+pnpm dev
+```
+
+### 5. Development Server
 
 Start the development server:
 
@@ -76,7 +88,7 @@ pnpm dev
 
 The site will be available at [http://localhost:3000](http://localhost:3000)
 
-### 5. Build for Production
+### 6. Build for Production
 
 To build the site for production:
 
@@ -84,7 +96,7 @@ To build the site for production:
 pnpm build
 ```
 
-### 6. Start Production Server
+### 7. Start Production Server
 
 To start the production server locally:
 
